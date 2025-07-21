@@ -10,7 +10,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardAction }
 import { useDataTableInstance } from "@/hooks/use-data-table-instance";
 
 import { recentLeadsColumns } from "./columns.crm";
-import { recentLeadsData } from "./crm.config";
+import { recentLeadsData } from "./sectors.config";
 
 export function TableCards() {
   const table = useDataTableInstance({

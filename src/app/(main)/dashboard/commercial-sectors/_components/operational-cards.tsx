@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { formatCurrency, cn } from "@/lib/utils";
 
-import { salesPipelineChartData, salesPipelineChartConfig, regionSalesData, actionItems } from "./crm.config";
+import { salesPipelineChartData, salesPipelineChartConfig, regionSalesData, actionItems } from "./sectors.config";
 
 export function OperationalCards() {
   const totalSales = regionSalesData.reduce((sum, region) => sum + region.sales, 0);

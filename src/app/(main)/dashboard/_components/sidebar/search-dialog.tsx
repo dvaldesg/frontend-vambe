@@ -15,16 +15,11 @@ import {
 } from "@/components/ui/command";
 
 const searchItems = [
-  { group: "Dashboards", icon: LayoutDashboard, label: "Default" },
-  { group: "Dashboards", icon: ChartBar, label: "CRM", disabled: true },
-  { group: "Dashboards", icon: Gauge, label: "Analytics", disabled: true },
-  { group: "Dashboards", icon: ShoppingBag, label: "E-Commerce", disabled: true },
-  { group: "Dashboards", icon: GraduationCap, label: "Academy", disabled: true },
-  { group: "Dashboards", icon: Forklift, label: "Logistics", disabled: true },
-  { group: "Authentication", label: "Login v1" },
-  { group: "Authentication", label: "Login v2" },
-  { group: "Authentication", label: "Register v1" },
-  { group: "Authentication", label: "Register v2" },
+  { group: "Dashboards", icon: LayoutDashboard, label: "General" },
+  { group: "Dashboards", icon: ChartBar, label: "Commercial Sectors", disabled: true },
+  { group: "Dashboards", icon: Gauge, label: "Sellers", disabled: true },
+  { group: "Clients", label: "Meetings" },
+  { group: "Clients", label: "Upload CSV" },
 ];
 
 export function SearchDialog() {
@@ -51,6 +46,9 @@ export function SearchDialog() {
         Search
         <kbd className="bg-muted inline-flex h-5 items-center gap-1 rounded border px-1.5 text-[10px] font-medium select-none">
           <span className="text-xs">⌘</span>J
+        </kbd>
+        <kbd className="bg-muted inline-flex h-5 items-center gap-1 rounded border px-1.5 text-[10px] font-medium select-none">
+          <span className="text-xs">Ctrl</span> + J
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>

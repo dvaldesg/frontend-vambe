@@ -11,7 +11,7 @@ import {
   leadsBySourceChartConfig,
   projectRevenueChartData,
   projectRevenueChartConfig,
-} from "./crm.config";
+} from "./sectors.config";
 
 export function InsightCards() {
   const totalLeads = leadsBySourceChartData.reduce((acc, curr) => acc + curr.leads, 0);

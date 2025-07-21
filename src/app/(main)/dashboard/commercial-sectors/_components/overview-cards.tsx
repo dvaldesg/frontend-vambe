@@ -14,7 +14,7 @@ import {
   proposalsChartConfig,
   revenueChartData,
   revenueChartConfig,
-} from "./crm.config";
+} from "./sectors.config";
 
 const lastMonth = format(subMonths(new Date(), 1), "LLLL");
 
