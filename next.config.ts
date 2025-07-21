@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  async redirects() {
+    return [
+      {
+        source: "/dashboard",
+        destination: "/dashboard/default",
+        permanent: false,
+      },
+    ];
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+export default nextConfig
