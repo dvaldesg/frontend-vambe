@@ -1,0 +1,8 @@
+[build]
+  command   = "npm run build"
+  # Con el plugin, Netlify internamente crea .netlify/next
+  publish   = ".netlify/next"      
+  functions = ".netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
