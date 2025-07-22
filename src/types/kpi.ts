@@ -19,13 +19,31 @@ export interface ChartAreaData {
   open: number;
 }
 
+export interface ClientMeetingData {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  email: string;
+  phone: string;
+  salesmanName: string;
+  salesmanId: number;
+  date: string;
+  closed: boolean;
+  transcription: string;
+}
+
 export interface KpiStore {
   sectionCards: SectionCardsData | null;
   chartAreaData: ChartAreaData[] | null;
+  clientMeetings: ClientMeetingData[] | null;
   lastFetch: number | null;
   chartLastFetch: number | null;
+  clientMeetingsLastFetch: number | null;
   setSectionCards: (data: SectionCardsData) => void;
   setChartAreaData: (data: ChartAreaData[]) => void;
+  setClientMeetings: (data: ClientMeetingData[]) => void;
   clearSectionCards: () => void;
   clearChartAreaData: () => void;
+  clearClientMeetings: () => void;
 }

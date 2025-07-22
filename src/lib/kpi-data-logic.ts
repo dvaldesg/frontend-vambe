@@ -1,5 +1,5 @@
 import { kpiService } from "@/services/api-services";
-import { SectionCardsData, ChartAreaData } from "@/types/kpi";
+import { SectionCardsData, ChartAreaData, ClientMeetingData } from "@/types/kpi";
 
 export async function fetchSectionCardsData(): Promise<SectionCardsData> {
   try {
@@ -16,6 +16,15 @@ export async function fetchChartAreaData(): Promise<ChartAreaData[]> {
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Error fetching chart data');
+  }
+}
+
+export async function fetchClientMeetingsData(): Promise<ClientMeetingData[]> {
+  try {
+    const response = await kpiService.getClientMeetings();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching client meetings data');
   }
 }
 

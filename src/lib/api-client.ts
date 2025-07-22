@@ -20,7 +20,6 @@ class ApiClient {
       ...(options.headers as Record<string, string>),
     };
 
-    // Agregar token de autorización si existe
     if (token && !tokenUtils.isTokenExpired(token)) {
       headers.Authorization = `Bearer ${token}`;
     }

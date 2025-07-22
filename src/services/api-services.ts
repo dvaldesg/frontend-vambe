@@ -1,5 +1,5 @@
 import { apiClient } from '@/lib/api-client';
-import { SectionCardsData, ChartAreaData } from '@/types/kpi';
+import { SectionCardsData, ChartAreaData, ClientMeetingData } from '@/types/kpi';
 
 export const kpiService = {
   async getSectionCards() {
@@ -8,5 +8,9 @@ export const kpiService = {
 
   async getChartAreaInteractive() {
     return apiClient.get<ChartAreaData[]>('/kpi/chart-area-interactive');
+  },
+
+  async getClientMeetings() {
+    return apiClient.get<ClientMeetingData[]>('/client-meetings/all');
   },
 };
