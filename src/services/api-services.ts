@@ -1,5 +1,5 @@
 import { apiClient } from '@/lib/api-client';
-import { SectionCardsData, ChartAreaData, ClientMeetingData } from '@/types/kpi';
+import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData } from '@/types/kpi';
 
 export const kpiService = {
   async getSectionCards() {
@@ -12,5 +12,13 @@ export const kpiService = {
 
   async getClientMeetings() {
     return apiClient.get<ClientMeetingData[]>('/client-meetings/all');
+  },
+
+  async getNewLeads() {
+    return apiClient.get<NewLeadsData[]>('/kpi/new-leads');
+  },
+
+  async getReasons() {
+    return apiClient.get<ReasonData[]>('/kpi/vambe-reason');
   },
 };
