@@ -1,15 +1,12 @@
-import { apiClient } from '@/lib/api-client'
+import { apiClient } from '@/lib/api-client';
+import { SectionCardsData, ChartAreaData } from '@/types/kpi';
 
-export const userService = {
-  async getCurrentProfile() {
-    return apiClient.get<{
-      id: number;
-      createdAt: string;
-      updatedAt: string;
-      email: string;
-      role: string;
-      firstName?: string;
-      lastName?: string;
-    }>('/users/me');
+export const kpiService = {
+  async getSectionCards() {
+    return apiClient.get<SectionCardsData>('/kpi/section-cards');
+  },
+
+  async getChartAreaInteractive() {
+    return apiClient.get<ChartAreaData[]>('/kpi/chart-area-interactive');
   },
 };
