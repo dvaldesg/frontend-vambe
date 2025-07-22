@@ -202,7 +202,7 @@ export function SalesmenList({
                       variant="ghost"
                       onClick={(e) => {
                         e.stopPropagation();
-                        router.push(`/dashboard/sellers/${salesman.id}`);
+                        router.push(`/dashboard/salesmen/${salesman.id}`);
                       }}
                       className="h-8 w-8 p-0"
                     >
