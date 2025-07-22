@@ -1,5 +1,5 @@
 import { apiClient } from '@/lib/api-client';
-import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData } from '@/types/kpi';
+import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanData, SalesmanPerformanceData, SalesmanSuccessRateData } from '@/types/kpi';
 
 export const kpiService = {
   async getSectionCards() {
@@ -36,5 +36,23 @@ export const kpiService = {
 
   async getCommercialSectorSuccessRates() {
     return apiClient.get<CommercialSectorSuccessRateData[]>('/kpi/commercial-sector-success-rate');
+  },
+
+  async getSalesmanPerformance() {
+    return apiClient.get<SalesmanPerformanceData[]>('/kpi/salesman-performance');
+  },
+
+  async getSalesmanSuccessRate(salesmanId: number) {
+    return apiClient.get<SalesmanSuccessRateData[]>(`/kpi/salesman-success-rate/${salesmanId}`);
+  },
+};
+
+export const salesmanService = {
+  async getAllSalesmen() {
+    return apiClient.get<SalesmanData[]>('/salesmen/all');
+  },
+
+  async createSalesman(name: string) {
+    return apiClient.post<SalesmanData>('/salesmen', { name });
   },
 };

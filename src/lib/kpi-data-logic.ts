@@ -1,5 +1,5 @@
-import { kpiService } from "@/services/api-services";
-import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData } from "@/types/kpi";
+import { kpiService, salesmanService } from "@/services/api-services";
+import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanData, SalesmanPerformanceData, SalesmanSuccessRateData } from "@/types/kpi";
 
 export async function fetchSectionCardsData(): Promise<SectionCardsData> {
   try {
@@ -79,6 +79,42 @@ export async function fetchCommercialSectorSuccessRatesData(): Promise<Commercia
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Error fetching commercial sector success rates data');
+  }
+}
+
+export async function fetchSalesmenData(): Promise<SalesmanData[]> {
+  try {
+    const response = await salesmanService.getAllSalesmen();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching salesmen data');
+  }
+}
+
+export async function createSalesmanData(name: string): Promise<SalesmanData> {
+  try {
+    const response = await salesmanService.createSalesman(name);
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error creating salesman');
+  }
+}
+
+export async function fetchSalesmanPerformanceData(): Promise<SalesmanPerformanceData[]> {
+  try {
+    const response = await kpiService.getSalesmanPerformance();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching salesman performance data');
+  }
+}
+
+export async function fetchSalesmanSuccessRateData(salesmanId: number): Promise<SalesmanSuccessRateData[]> {
+  try {
+    const response = await kpiService.getSalesmanSuccessRate(salesmanId);
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching salesman success rate data');
   }
 }
 

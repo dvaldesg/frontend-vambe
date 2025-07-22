@@ -1,7 +1,6 @@
 import { ChartConfig } from "@/components/ui/chart";
-import { LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData } from "@/types/kpi";
+import { LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanSuccessRateData } from "@/types/kpi";
 
-// Extended grayscale palette to handle more items
 const extendedColorPalette = [
   "var(--chart-1)",
   "var(--chart-2)",
@@ -121,7 +120,6 @@ export function generateCommercialSectorsChartConfig(apiData: CommercialSectorDa
   return config;
 }
 
-// Success rate colors and utilities
 export function getSuccessRateColor(rate: number): string {
   if (rate >= 60) return "hsl(142, 76%, 36%)"; // Green
   if (rate <= 40) return "hsl(0, 84%, 60%)"; // Red
@@ -143,6 +141,20 @@ export function transformLeadSourceSuccessRateData(apiData: LeadSourceSuccessRat
 }
 
 export function transformCommercialSectorSuccessRateData(apiData: CommercialSectorSuccessRateData[]) {
+  return apiData.map((item) => ({
+    commercialSector: item.commercialSector,
+    closed: item.closed,
+    notClosed: item.notClosed,
+    successRate: item.successRate,
+    total: item.closed + item.notClosed,
+    successRateColor: getSuccessRateColor(item.successRate),
+    closedColor: "hsl(142, 76%, 36%)", // Green
+    notClosedColor: "hsl(0, 84%, 60%)", // Red
+    sectorLabel: sectorLabelMap[item.commercialSector] || item.commercialSector
+  }));
+}
+
+export function transformSalesmanSuccessRateData(apiData: SalesmanSuccessRateData[]) {
   return apiData.map((item) => ({
     commercialSector: item.commercialSector,
     closed: item.closed,
