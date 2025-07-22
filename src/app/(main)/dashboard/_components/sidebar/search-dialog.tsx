@@ -17,7 +17,7 @@ import {
 const searchItems = [
   { group: "Dashboards", icon: LayoutDashboard, label: "General" },
   { group: "Dashboards", icon: ChartBar, label: "Commercial Sectors", disabled: true },
-  { group: "Dashboards", icon: Banknote, label: "Sellers", disabled: true },
+  { group: "Dashboards", icon: Banknote, label: "Salesmen", disabled: true },
   { group: "Clients", label: "Meetings" },
   { group: "Clients", label: "Upload CSV" },
 ];

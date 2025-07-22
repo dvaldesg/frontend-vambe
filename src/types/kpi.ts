@@ -68,6 +68,31 @@ export interface CommercialSectorSuccessRateData {
   successRate: number;
 }
 
+export interface SalesmanData {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+}
+
+export interface SalesmanPerformanceMonth {
+  month: string;
+  totalMeetings: number;
+  closedMeetings: number;
+}
+
+export interface SalesmanPerformanceData {
+  salesmanName: string;
+  data: SalesmanPerformanceMonth[];
+}
+
+export interface SalesmanSuccessRateData {
+  commercialSector: string;
+  closed: number;
+  notClosed: number;
+  successRate: number;
+}
+
 export interface KpiStore {
   sectionCards: SectionCardsData | null;
   chartAreaData: ChartAreaData[] | null;

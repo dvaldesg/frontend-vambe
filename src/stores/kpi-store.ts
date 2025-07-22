@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData } from '@/types/kpi';
+import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanData, SalesmanPerformanceData } from '@/types/kpi';
 
 interface KpiStore {
   sectionCards: SectionCardsData | null;
@@ -12,6 +12,8 @@ interface KpiStore {
   commercialSectors: CommercialSectorData[] | null;
   leadSourceSuccessRates: LeadSourceSuccessRateData[] | null;
   commercialSectorSuccessRates: CommercialSectorSuccessRateData[] | null;
+  salesmen: SalesmanData[] | null;
+  salesmanPerformance: SalesmanPerformanceData[] | null;
   lastFetch: number | null;
   chartLastFetch: number | null;
   clientMeetingsLastFetch: number | null;
@@ -21,6 +23,8 @@ interface KpiStore {
   commercialSectorsLastFetch: number | null;
   leadSourceSuccessRatesLastFetch: number | null;
   commercialSectorSuccessRatesLastFetch: number | null;
+  salesmenLastFetch: number | null;
+  salesmanPerformanceLastFetch: number | null;
   setSectionCards: (data: SectionCardsData) => void;
   setChartAreaData: (data: ChartAreaData[]) => void;
   setClientMeetings: (data: ClientMeetingData[]) => void;
@@ -30,6 +34,8 @@ interface KpiStore {
   setCommercialSectors: (data: CommercialSectorData[]) => void;
   setLeadSourceSuccessRates: (data: LeadSourceSuccessRateData[]) => void;
   setCommercialSectorSuccessRates: (data: CommercialSectorSuccessRateData[]) => void;
+  setSalesmen: (data: SalesmanData[]) => void;
+  setSalesmanPerformance: (data: SalesmanPerformanceData[]) => void;
   clearSectionCards: () => void;
   clearChartAreaData: () => void;
   clearClientMeetings: () => void;
@@ -39,6 +45,8 @@ interface KpiStore {
   clearCommercialSectors: () => void;
   clearLeadSourceSuccessRates: () => void;
   clearCommercialSectorSuccessRates: () => void;
+  clearSalesmen: () => void;
+  clearSalesmanPerformance: () => void;
 }
 
 
@@ -54,6 +62,8 @@ export const useKpiStore = create<KpiStore>()(
       commercialSectors: null,
       leadSourceSuccessRates: null,
       commercialSectorSuccessRates: null,
+      salesmen: null,
+      salesmanPerformance: null,
       lastFetch: null,
       chartLastFetch: null,
       clientMeetingsLastFetch: null,
@@ -63,6 +73,8 @@ export const useKpiStore = create<KpiStore>()(
       commercialSectorsLastFetch: null,
       leadSourceSuccessRatesLastFetch: null,
       commercialSectorSuccessRatesLastFetch: null,
+      salesmenLastFetch: null,
+      salesmanPerformanceLastFetch: null,
       setSectionCards: (data) => set({ 
         sectionCards: data, 
         lastFetch: Date.now() 
@@ -99,6 +111,14 @@ export const useKpiStore = create<KpiStore>()(
         commercialSectorSuccessRates: data, 
         commercialSectorSuccessRatesLastFetch: Date.now() 
       }),
+      setSalesmen: (data) => set({ 
+        salesmen: data, 
+        salesmenLastFetch: Date.now() 
+      }),
+      setSalesmanPerformance: (data) => set({ 
+        salesmanPerformance: data, 
+        salesmanPerformanceLastFetch: Date.now() 
+      }),
       clearSectionCards: () => set({ 
         sectionCards: null, 
         lastFetch: null 
@@ -134,6 +154,14 @@ export const useKpiStore = create<KpiStore>()(
       clearCommercialSectorSuccessRates: () => set({ 
         commercialSectorSuccessRates: null, 
         commercialSectorSuccessRatesLastFetch: null 
+      }),
+      clearSalesmen: () => set({ 
+        salesmen: null, 
+        salesmenLastFetch: null 
+      }),
+      clearSalesmanPerformance: () => set({ 
+        salesmanPerformance: null, 
+        salesmanPerformanceLastFetch: null 
       }),
     }),
     {
