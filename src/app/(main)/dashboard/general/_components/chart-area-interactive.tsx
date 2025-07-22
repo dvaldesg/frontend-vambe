@@ -116,7 +116,7 @@ export function ChartAreaInteractive({ chartAreaData, isLoading, error }: ChartA
   return (
     <Card className="@container/card">
       <CardHeader>
-        <CardTitle>Deals Overview</CardTitle>
+        <CardTitle>Meetings Volume Overview</CardTitle>
         <CardDescription>
           {isLoading ? (
             "Loading chart data..."

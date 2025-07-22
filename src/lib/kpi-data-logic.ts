@@ -1,5 +1,5 @@
 import { kpiService } from "@/services/api-services";
-import { SectionCardsData, ChartAreaData, ClientMeetingData } from "@/types/kpi";
+import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData } from "@/types/kpi";
 
 export async function fetchSectionCardsData(): Promise<SectionCardsData> {
   try {
@@ -25,6 +25,60 @@ export async function fetchClientMeetingsData(): Promise<ClientMeetingData[]> {
     return response;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : 'Error fetching client meetings data');
+  }
+}
+
+export async function fetchNewLeadsData(): Promise<NewLeadsData[]> {
+  try {
+    const response = await kpiService.getNewLeads();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching new leads data');
+  }
+}
+
+export async function fetchReasonsData(): Promise<ReasonData[]> {
+  try {
+    const response = await kpiService.getReasons();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching reasons data');
+  }
+}
+
+export async function fetchLeadsSourceData(): Promise<LeadsSourceData[]> {
+  try {
+    const response = await kpiService.getLeadsSource();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching leads source data');
+  }
+}
+
+export async function fetchCommercialSectorsData(): Promise<CommercialSectorData[]> {
+  try {
+    const response = await kpiService.getCommercialSectors();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching commercial sectors data');
+  }
+}
+
+export async function fetchLeadSourceSuccessRatesData(): Promise<LeadSourceSuccessRateData[]> {
+  try {
+    const response = await kpiService.getLeadSourceSuccessRates();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching lead source success rates data');
+  }
+}
+
+export async function fetchCommercialSectorSuccessRatesData(): Promise<CommercialSectorSuccessRateData[]> {
+  try {
+    const response = await kpiService.getCommercialSectorSuccessRates();
+    return response;
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : 'Error fetching commercial sector success rates data');
   }
 }
 
