@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 
-import { LayoutDashboard, ChartBar, Gauge, ShoppingBag, GraduationCap, Forklift, Search } from "lucide-react";
+import { LayoutDashboard, ChartBar, Banknote, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +17,7 @@ import {
 const searchItems = [
   { group: "Dashboards", icon: LayoutDashboard, label: "General" },
   { group: "Dashboards", icon: ChartBar, label: "Commercial Sectors", disabled: true },
-  { group: "Dashboards", icon: Gauge, label: "Sellers", disabled: true },
+  { group: "Dashboards", icon: Banknote, label: "Sellers", disabled: true },
   { group: "Clients", label: "Meetings" },
   { group: "Clients", label: "Upload CSV" },
 ];
