@@ -42,8 +42,8 @@ export const sidebarItems: NavGroup[] = [
         icon: LayoutDashboard,
       },
       {
-        title: "Commercial Sectors",
-        url: "/dashboard/commercial-sectors",
+        title: "Leads Analysis",
+        url: "/dashboard/leads-analysis",
         icon: ChartBar,
       },
       {
