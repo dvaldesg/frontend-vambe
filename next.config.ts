@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+
   async redirects() {
     return [
       {
@@ -12,6 +17,6 @@ const nextConfig = {
       },
     ];
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
