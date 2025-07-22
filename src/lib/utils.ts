@@ -19,6 +19,11 @@ export const getInitials = (str: string): string => {
   );
 };
 
+export const getDisplayName = (str: string): string => {
+  if (typeof str !== "string" || !str.trim()) return "?";
+  return (str.split('@')[0])
+}
+
 export function formatCurrency(
   amount: number,
   opts?: {
