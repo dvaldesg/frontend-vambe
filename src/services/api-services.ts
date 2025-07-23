@@ -1,6 +1,7 @@
 import { apiClient } from '@/lib/api-client';
 import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanData, SalesmanPerformanceData, SalesmanSuccessRateData } from '@/types/kpi';
 import { CreateClientMeetingRequest } from '@/types/client-meeting';
+import { ClientClassificationData } from '@/types/client-classification';
 
 
 export const kpiService = {
@@ -60,15 +61,26 @@ export const salesmanService = {
 };
 
 export const clientMeetingService = {
-  async createClientMeeting(data: CreateClientMeetingRequest) {
-    return apiClient.post<ClientMeetingData>('/client-meetings', data);
+  async createClientMeeting(data: CreateClientMeetingRequest): Promise<ClientMeetingData> {
+    const response = await apiClient.post<ClientMeetingData>('/client-meetings', data);
+    return response;
   },
 
-  async uploadCsv(file: File) {
+  async uploadCsv(file: File): Promise<{ message: string; meetingsCreated: number }> {
     const formData = new FormData();
     formData.append('file', file);
     
-    // Now that apiClient handles FormData, we can use it directly
-    return apiClient.post('/csv-parser/client-meetings', formData);
+    const response = await apiClient.post<{ message: string; meetingsCreated: number }>('/csv-parser/client-meetings', formData);
+    return response;
   },
+
+  async getAllMeetings(): Promise<ClientMeetingData[]> {
+    const response = await apiClient.get<ClientMeetingData[]>('/client-meetings/all');
+    return response;
+  },
+
+  async getClientMeetingClassification(meetingId: number): Promise<ClientClassificationData> {
+    const response = await apiClient.get<ClientClassificationData>(`/client-classifications/meeting/${meetingId}`);
+    return response;
+  }
 };
