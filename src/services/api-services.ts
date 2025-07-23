@@ -2,6 +2,7 @@ import { apiClient } from '@/lib/api-client';
 import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanData, SalesmanPerformanceData, SalesmanSuccessRateData } from '@/types/kpi';
 import { CreateClientMeetingRequest } from '@/types/client-meeting';
 import { ClientClassificationData } from '@/types/client-classification';
+import { CsvUploadResponse } from '@/types/csv-upload';
 
 
 export const kpiService = {
@@ -66,11 +67,11 @@ export const clientMeetingService = {
     return response;
   },
 
-  async uploadCsv(file: File): Promise<{ message: string; meetingsCreated: number }> {
+  async uploadCsv(file: File): Promise<CsvUploadResponse> {
     const formData = new FormData();
     formData.append('file', file);
     
-    const response = await apiClient.post<{ message: string; meetingsCreated: number }>('/csv-parser/client-meetings', formData);
+    const response = await apiClient.post<CsvUploadResponse>('/csv-parser/client-meetings', formData);
     return response;
   },
 
