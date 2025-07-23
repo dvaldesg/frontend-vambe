@@ -32,8 +32,8 @@ export default function RegisterV1() {
           <div className="space-y-6">
             <Command className="text-primary-foreground mx-auto size-12" />
             <div className="space-y-2">
-              <h1 className="text-primary-foreground text-5xl font-light">Welcome!</h1>
-              <p className="text-primary-foreground/80 text-xl">You&apos;re in the right place.</p>
+              <h1 className="text-primary-foreground text-5xl font-light">Welcome to Vambe AI Dashboard!</h1>
+              <p className="text-primary-foreground/80 text-xl">You&apos;re in the right place (I guess)</p>
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
 "use client";
 import * as React from "react";
+import { useRouter } from "next/navigation";
 
-import { LayoutDashboard, ChartBar, Banknote, Search } from "lucide-react";
+import { LayoutDashboard, ChartBar, Banknote, Search, Calendar, Upload } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,15 +16,20 @@ import {
 } from "@/components/ui/command";
 
 const searchItems = [
-  { group: "Dashboards", icon: LayoutDashboard, label: "General" },
-  { group: "Dashboards", icon: ChartBar, label: "Commercial Sectors", disabled: true },
-  { group: "Dashboards", icon: Banknote, label: "Salesmen", disabled: true },
-  { group: "Clients", label: "Meetings" },
-  { group: "Clients", label: "Upload CSV" },
+  { group: "Dashboards", icon: LayoutDashboard, label: "General", url: "/dashboard/general" },
+  { group: "Dashboards", icon: ChartBar, label: "Leads Analysis", url: "/dashboard/leads-analysis" },
+  { group: "Dashboards", icon: Banknote, label: "Salesmen", url: "/dashboard/salesmen" },
+  { group: "Dashboards", icon: Calendar, label: "Meetings", url: "/dashboard/meetings" },
 ];
 
 export function SearchDialog() {
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+
+  const handleSelect = (url: string) => {
+    setOpen(false);
+    router.push(url);
+  };
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
@@ -62,7 +68,11 @@ export function SearchDialog() {
                 {searchItems
                   .filter((item) => item.group === group)
                   .map((item) => (
-                    <CommandItem className="!py-1.5" key={item.label} onSelect={() => setOpen(false)}>
+                    <CommandItem 
+                      className="!py-1.5 cursor-pointer" 
+                      key={item.label} 
+                      onSelect={() => handleSelect(item.url)}
+                    >
                       {item.icon && <item.icon />}
                       <span>{item.label}</span>
                     </CommandItem>
