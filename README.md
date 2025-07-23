@@ -170,5 +170,9 @@ Things I would have liked to add or implement:
 
 3. **Ideal Client Analysis**: Add a backend call to analyze and display the characteristics of an ideal client based on current data, including individual ideal client profiles for each salesman.
 
-4. **Client Pain Points Map**: Create a visual pain points map showing what clients want to solve with Vambe, with intensity represented by radius based on metrics like number of required attention points, opportunity volume, delay importance, commercial sector, and other relevant factors. 
+4. **Client Pain Points Map**: Create a visual pain points map showing what clients want to solve with Vambe, with intensity represented by radius based on metrics like number of required attention points, opportunity volume, delay importance, commercial sector, and other relevant factors.
+
+5. **Enhanced User Profile**: Leverage user endpoints to make the profile section more meaningful and functional, displaying relevant user information and preferences.
+
+6. **AI Classification Regeneration**: Add an endpoint to regenerate AI classification when necessary, allowing users to add extra insights or context that could improve the classification accuracy. 
 
