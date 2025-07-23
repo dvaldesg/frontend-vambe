@@ -118,7 +118,7 @@ export function NewMeetingDialog({ children }: NewMeetingDialogProps) {
         email: formData.email.trim(),
         phone: formData.phone.trim(),
         salesmanName: selectedSalesman.name,
-        date: formData.date.split('T')[0],
+        date: formData.date,
         closed: formData.closed,
         transcription: formData.transcription.trim(),
       };
@@ -259,13 +259,12 @@ export function NewMeetingDialog({ children }: NewMeetingDialogProps) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="date">Meeting Date & Time *</Label>
+                  <Label htmlFor="date">Meeting Date *</Label>
                   <Input
                     id="date"
-                    type="datetime-local"
+                    type="date"
                     value={formData.date}
                     onChange={(e) => handleInputChange("date", e.target.value)}
-                    min={getCurrentDateTime()}
                   />
                 </div>
                 
@@ -287,10 +286,10 @@ export function NewMeetingDialog({ children }: NewMeetingDialogProps) {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="transcription">Meeting Notes (Optional)</Label>
+                <Label htmlFor="transcription">Meeting Transcription</Label>
                 <Textarea
                   id="transcription"
-                  placeholder="Add any notes or transcription about the meeting..."
+                  placeholder="Add a transcription with information about the meeting..."
                   value={formData.transcription}
                   onChange={(e) => handleInputChange("transcription", e.target.value)}
                   rows={4}
