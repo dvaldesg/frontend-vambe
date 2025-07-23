@@ -9,7 +9,6 @@ import { Upload } from "lucide-react";
 export default function UploadCsvPage() {
   const router = useRouter();
 
-  // If someone accesses this page directly, show the dialog content
   return (
     <div className="space-y-6">
       <div className="space-y-1">
