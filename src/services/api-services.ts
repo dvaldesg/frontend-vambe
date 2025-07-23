@@ -1,5 +1,7 @@
 import { apiClient } from '@/lib/api-client';
 import { SectionCardsData, ChartAreaData, ClientMeetingData, NewLeadsData, ReasonData, LeadsSourceData, CommercialSectorData, LeadSourceSuccessRateData, CommercialSectorSuccessRateData, SalesmanData, SalesmanPerformanceData, SalesmanSuccessRateData } from '@/types/kpi';
+import { CreateClientMeetingRequest } from '@/types/client-meeting';
+
 
 export const kpiService = {
   async getSectionCards() {
@@ -54,5 +56,19 @@ export const salesmanService = {
 
   async createSalesman(name: string) {
     return apiClient.post<SalesmanData>('/salesmen', { name });
+  },
+};
+
+export const clientMeetingService = {
+  async createClientMeeting(data: CreateClientMeetingRequest) {
+    return apiClient.post<ClientMeetingData>('/client-meetings', data);
+  },
+
+  async uploadCsv(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    // Now that apiClient handles FormData, we can use it directly
+    return apiClient.post('/csv-parser/client-meetings', formData);
   },
 };

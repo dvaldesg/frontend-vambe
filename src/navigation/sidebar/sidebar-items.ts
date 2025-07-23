@@ -3,6 +3,7 @@ import {
   LayoutDashboard,
   ChartBar,
   Banknote,
+  Upload,
   type LucideIcon,
 } from "lucide-react";
 
@@ -63,7 +64,7 @@ export const sidebarItems: NavGroup[] = [
         icon: Users,
         subItems: [
           { title: "Meetings", url: "/clients/meetings" },
-          { title: "Upload a Meetings CSV", url: "/clients/upload-csv", newTab: true },
+          { title: "Upload a Meetings CSV", url: "/clients/upload-csv", icon: Upload },
         ],
       },
     ],

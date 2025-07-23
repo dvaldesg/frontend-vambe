@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { PlusCircleIcon, MailIcon, ChevronRight } from "lucide-react";
+import { PlusCircleIcon, MailIcon, ChevronRight, Upload } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -26,6 +26,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { type NavGroup, type NavMainItem } from "@/navigation/sidebar/sidebar-items";
+import { UploadCsvDialog } from "@/components/upload-csv-dialog";
+import { NewMeetingDialog } from "@/components/new-meeting-dialog";
 
 interface NavMainProps {
   readonly items: readonly NavGroup[];
@@ -79,13 +81,27 @@ const NavItemExpanded = ({
             <SidebarMenuSub>
               {item.subItems.map((subItem) => (
                 <SidebarMenuSubItem key={subItem.title}>
-                  <SidebarMenuSubButton aria-disabled={subItem.comingSoon} isActive={isActive(subItem.url)} asChild>
-                    <Link href={subItem.url} target={subItem.newTab ? "_blank" : undefined}>
-                      {subItem.icon && <subItem.icon />}
-                      <span>{subItem.title}</span>
-                      {subItem.comingSoon && <IsComingSoon />}
-                    </Link>
-                  </SidebarMenuSubButton>
+                  {subItem.title === "Upload a Meetings CSV" ? (
+                    <UploadCsvDialog>
+                      <SidebarMenuSubButton 
+                        aria-disabled={subItem.comingSoon} 
+                        isActive={isActive(subItem.url)}
+                        className="w-full cursor-pointer"
+                      >
+                        {subItem.icon && <subItem.icon />}
+                        <span>{subItem.title}</span>
+                        {subItem.comingSoon && <IsComingSoon />}
+                      </SidebarMenuSubButton>
+                    </UploadCsvDialog>
+                  ) : (
+                    <SidebarMenuSubButton aria-disabled={subItem.comingSoon} isActive={isActive(subItem.url)} asChild>
+                      <Link href={subItem.url} target={subItem.newTab ? "_blank" : undefined}>
+                        {subItem.icon && <subItem.icon />}
+                        <span>{subItem.title}</span>
+                        {subItem.comingSoon && <IsComingSoon />}
+                      </Link>
+                    </SidebarMenuSubButton>
+                  )}
                 </SidebarMenuSubItem>
               ))}
             </SidebarMenuSub>
@@ -120,19 +136,34 @@ const NavItemCollapsed = ({
         <DropdownMenuContent className="w-50 space-y-1" side="right" align="start">
           {item.subItems?.map((subItem) => (
             <DropdownMenuItem key={subItem.title} asChild>
-              <SidebarMenuSubButton
-                key={subItem.title}
-                asChild
-                className="focus-visible:ring-0"
-                aria-disabled={subItem.comingSoon}
-                isActive={isActive(subItem.url)}
-              >
-                <Link href={subItem.url} target={subItem.newTab ? "_blank" : undefined}>
-                  {subItem.icon && <subItem.icon className="[&>svg]:text-sidebar-foreground" />}
-                  <span>{subItem.title}</span>
-                  {subItem.comingSoon && <IsComingSoon />}
-                </Link>
-              </SidebarMenuSubButton>
+              {subItem.title === "Upload a Meetings CSV" ? (
+                <UploadCsvDialog>
+                  <SidebarMenuSubButton
+                    key={subItem.title}
+                    className="focus-visible:ring-0 w-full cursor-pointer"
+                    aria-disabled={subItem.comingSoon}
+                    isActive={isActive(subItem.url)}
+                  >
+                    {subItem.icon && <subItem.icon className="[&>svg]:text-sidebar-foreground" />}
+                    <span>{subItem.title}</span>
+                    {subItem.comingSoon && <IsComingSoon />}
+                  </SidebarMenuSubButton>
+                </UploadCsvDialog>
+              ) : (
+                <SidebarMenuSubButton
+                  key={subItem.title}
+                  asChild
+                  className="focus-visible:ring-0"
+                  aria-disabled={subItem.comingSoon}
+                  isActive={isActive(subItem.url)}
+                >
+                  <Link href={subItem.url} target={subItem.newTab ? "_blank" : undefined}>
+                    {subItem.icon && <subItem.icon className="[&>svg]:text-sidebar-foreground" />}
+                    <span>{subItem.title}</span>
+                    {subItem.comingSoon && <IsComingSoon />}
+                  </Link>
+                </SidebarMenuSubButton>
+              )}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
@@ -162,13 +193,15 @@ export function NavMain({ items }: NavMainProps) {
         <SidebarGroupContent className="flex flex-col gap-2">
           <SidebarMenu>
             <SidebarMenuItem className="flex items-center gap-2">
-              <SidebarMenuButton
-                tooltip="Quick Create"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
-              >
-                <PlusCircleIcon />
-                <span>New meeting info</span>
-              </SidebarMenuButton>
+              <NewMeetingDialog>
+                <SidebarMenuButton
+                  tooltip="Quick Create"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear cursor-pointer"
+                >
+                  <PlusCircleIcon />
+                  <span>New meeting info</span>
+                </SidebarMenuButton>
+              </NewMeetingDialog>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
