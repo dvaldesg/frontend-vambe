@@ -8,7 +8,6 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
-  // Enable static export for Netlify
   output: 'export',
   trailingSlash: true,
   images: {

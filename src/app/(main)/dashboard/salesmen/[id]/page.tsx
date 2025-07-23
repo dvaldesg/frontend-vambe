@@ -10,14 +10,6 @@ import { fetchSalesmanSuccessRateData } from "@/lib/kpi-data-logic";
 import { transformSalesmanSuccessRateData } from "@/lib/chart-config-utils";
 import { SalesmanSuccessRateData } from "@/types/kpi";
 
-// Generate static params for all possible salesman IDs
-export async function generateStaticParams() {
-  // For static generation, we'll pre-generate a reasonable number of IDs
-  // You can adjust this range based on your expected salesman IDs
-  const salesmanIds = Array.from({ length: 100 }, (_, i) => ({ id: (i + 1).toString() }));
-  return salesmanIds;
-}
-
 export default function SalesmanDetailPage() {
   const params = useParams();
   const router = useRouter();
