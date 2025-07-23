@@ -12,7 +12,8 @@ export default function LoginV1() {
           <div className="space-y-6">
             <Command className="text-primary-foreground mx-auto size-12" />
             <div className="space-y-2">
-              <h1 className="text-primary-foreground text-5xl font-light">Hello again</h1>
+              <h1 className="text-primary-foreground text-5xl font-light">Vambe AI Dashboard</h1>
+              <p className="text-primary-foreground/80 text-xl">by @dvaldesg</p>
               <p className="text-primary-foreground/80 text-xl">Login to continue</p>
             </div>
           </div>
