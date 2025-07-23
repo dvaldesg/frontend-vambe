@@ -1,11 +1,6 @@
 [build]
   command = "npm run build"
+  publish = "out"
 
-[functions]
-  external_node_modules = ["sharp"]
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  
-  [plugins.inputs]
-    target = "server"
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
